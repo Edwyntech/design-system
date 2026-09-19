@@ -1,0 +1,169 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Getting Started/Integration Frameworks" />
+
+# Intégration Multi-Frameworks
+
+Les composants d'Edwyn sont développés avec les **standards ouverts W3C Custom Elements v1**. Ils fonctionnent de manière native dans n'importe quel framework ou bibliothèque JavaScript moderne sans adaptateur obligatoire.
+
+---
+
+## ⚛️ React 19+ (Support Natif)
+
+Depuis **React 19**, les Custom Elements sont supportés nativement : les propriétés complexes (objets, tableaux) et les événements personnalisés sont gérés sans wrapper additionnel.
+
+```tsx
+import React from 'react';
+import '@edwyn-tech/design-system/components/button';
+import '@edwyn-tech/design-system/components/badge';
+
+export function HeaderBanner() {
+  return (
+    <header className="flex items-center justify-between p-4">
+      <edwyn-badge variant="primary" dot>
+        Transparence 100%
+      </edwyn-badge>
+      <edwyn-button variant="simulator" onClick={() => console.log('Simulateur lancé')}>
+        Simuler mon salaire 🚀
+      </edwyn-button>
+    </header>
+  );
+}
+```
+
+### React 18 et antérieurs (avec `@lit/react`)
+
+Pour React 18 et les versions précédentes, utilisez le wrapper officiel `@lit/react` pour créer des composants React fortement typés :
+
+```tsx
+import React from 'react';
+import { createComponent } from '@lit/react';
+import { EdwynButton } from '@edwyn-tech/design-system/components/button';
+
+export const Button = createComponent({
+  tagName: 'edwyn-button',
+  elementClass: EdwynButton,
+  react: React,
+  events: {
+    onClick: 'click',
+  },
+});
+```
+
+---
+
+## 💚 Vue 3 & Nuxt
+
+Vue supporte les Custom Elements de façon native et transparente via la directive `.prop` ou la liaison `:prop`.
+
+### 1. Déclarer le préfixe dans `vite.config.ts` (ou `nuxt.config.ts`)
+
+Pour éviter que le compilateur Vue n'affiche des avertissements concernant les balises personnalisées non reconnues :
+
+```typescript
+// vite.config.ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // Traite toutes les balises commençant par "edwyn-" comme des Custom Elements
+          isCustomElement: (tag) => tag.startsWith('edwyn-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### 2. Utilisation dans un composant `.vue`
+
+```html
+<template>
+  <div class="card-wrapper">
+    <edwyn-card :interactive="true" :highlighted="isSpecial">
+      <h3 slot="title">Notre Modèle</h3>
+      <p slot="description">Marge excédentaire redistribuée à 100% pour les consultants.</p>
+      <div slot="footer">
+        <edwyn-button variant="primary" @click="handleClick"> En savoir plus </edwyn-button>
+      </div>
+    </edwyn-card>
+  </div>
+</template>
+
+<script setup lang="ts">
+  import '@edwyn-tech/design-system/components/card';
+  import '@edwyn-tech/design-system/components/button';
+
+  const isSpecial = true;
+  const handleClick = () => alert('Action validée');
+</script>
+```
+
+---
+
+## 🚀 Astro (Zero-JS SSR & Hydratation)
+
+Astro permet de consommer les Web Components avec un rendu statique optimal côté serveur et une hydratation côté client :
+
+```astro
+---
+// src/pages/index.astro
+import '@edwyn-tech/design-system/tokens/typography.css';
+import '@edwyn-tech/design-system/tokens/tokens.css';
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Edwyn Tech</title>
+  </head>
+  <body class="bg-[#292e30] text-white">
+    <edwyn-navbar position="fixed" active-href="/"></edwyn-navbar>
+
+    <main class="pt-24 px-6 max-w-5xl mx-auto">
+      <edwyn-hero
+        title="L'ESN"
+        highlight="Alternative"
+        subtitle="Transparence, Craftsmanship et Redistribution."
+      ></edwyn-hero>
+    </main>
+
+    <edwyn-footer year={2026}></edwyn-footer>
+
+    <script>
+      import '@edwyn-tech/design-system/components/navbar';
+      import '@edwyn-tech/design-system/components/hero';
+      import '@edwyn-tech/design-system/components/footer';
+    </script>
+  </body>
+</html>
+```
+
+---
+
+## 🅰️ Angular (14+)
+
+Dans Angular, ajoutez `CUSTOM_ELEMENTS_SCHEMA` à votre module ou composant standalone pour autoriser les Custom Elements :
+
+```typescript
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import '@edwyn-tech/design-system/components/button';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <edwyn-button [variant]="'primary'" (click)="onAction()"> Explorer la Vision </edwyn-button>
+  `,
+})
+export class AppComponent {
+  onAction() {
+    console.log('Action déclenchée depuis Angular');
+  }
+}
+```

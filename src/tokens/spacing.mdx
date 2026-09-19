@@ -1,0 +1,52 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Spacing & Grid" />
+
+# Espacement & Grille
+
+Le système d'espacement d'Edwyn repose sur une base modulaire de **4px / 8px**, assurant un rythme vertical harmonieux et des proportions consistantes à travers tous les écrans.
+
+---
+
+## 📐 Échelle d'Espacement
+
+Toutes les dimensions internes des composants (paddings, margins, gaps) dérivent des tokens suivants :
+
+| Token CSS            | Clé  | Valeur (rem) | Pixels | Exemple visuel                                    |
+| :------------------- | :--- | :----------- | :----- | :------------------------------------------------ |
+| `--edwyn-spacing-1`  | `1`  | `0.25rem`    | `4px`  | Micro-espacement, padding interne d'icônes        |
+| `--edwyn-spacing-2`  | `2`  | `0.5rem`     | `8px`  | Gaps de badges, espacement de sous-éléments       |
+| `--edwyn-spacing-3`  | `3`  | `0.75rem`    | `12px` | Padding vertical de boutons, séparateurs de texte |
+| `--edwyn-spacing-4`  | `4`  | `1rem`       | `16px` | Espacement standard entre champs et labels        |
+| `--edwyn-spacing-5`  | `5`  | `1.25rem`    | `20px` | Marges internes de formulaires compacts           |
+| `--edwyn-spacing-6`  | `6`  | `1.5rem`     | `24px` | Padding standard des cartes (`edwyn-card`)        |
+| `--edwyn-spacing-8`  | `8`  | `2rem`       | `32px` | Gaps de grilles multi-colonnes                    |
+| `--edwyn-spacing-10` | `10` | `2.5rem`     | `40px` | Respirations entre paragraphes et sections        |
+| `--edwyn-spacing-12` | `12` | `3rem`       | `48px` | Padding vertical moyen des conteneurs             |
+| `--edwyn-spacing-16` | `16` | `4rem`       | `64px` | Espacement standard de sections principales       |
+| `--edwyn-spacing-20` | `20` | `5rem`       | `80px` | Grandes respirations de page                      |
+| `--edwyn-spacing-24` | `24` | `6rem`       | `96px` | Padding du Hero Banner d'accueil                  |
+
+---
+
+## 🌐 Système de Conteneurs & Largeurs Maximales
+
+Pour assurer une lecture optimale du contenu sur grands écrans, les conteneurs utilisent les largeurs de référence suivantes :
+
+- **Écran étroit / Carte isolée** : `max-width: 480px` (ex: widgets simulateur, formulaires d'authentification).
+- **Contenu textuel & articles** : `max-width: 768px` (confort de lecture ~75 caractères par ligne).
+- **Grille de cartes / Piliers** : `max-width: 1200px` (3 colonnes symétriques avec `gap: 2rem`).
+- **Pleine largeur avec marges de sécurité** : `max-width: 1440px` avec `padding: 0 1.5rem`.
+
+---
+
+## 🔘 Arrondis de Bordure (Radii)
+
+| Token CSS             | Valeur           | Usage                                         |
+| :-------------------- | :--------------- | :-------------------------------------------- |
+| `--edwyn-radius-sm`   | `0.25rem` (4px)  | Étiquettes denses, tooltips                   |
+| `--edwyn-radius-md`   | `0.375rem` (6px) | Boutons, champs de saisie natifs              |
+| `--edwyn-radius-lg`   | `0.5rem` (8px)   | Cartes internes, sous-conteneurs              |
+| `--edwyn-radius-xl`   | `0.75rem` (12px) | Cartes principales (`edwyn-card`), simulateur |
+| `--edwyn-radius-2xl`  | `1rem` (16px)    | Modales, bannières d'accueil                  |
+| `--edwyn-radius-full` | `9999px`         | Badges de statut pill, boutons pill           |

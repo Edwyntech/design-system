@@ -1,0 +1,170 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Architecture & Standards" />
+
+# Architecture & Standards Techniques
+
+Le Design System Edwyn repose sur une architecture moderne sans compromis, axée sur la pérennité, la rapidité d'exécution et l'indépendance vis-à-vis des frameworks.
+
+---
+
+## 🏛️ Les 4 Piliers Fondamentaux
+
+<div className="pillars-grid-2x2">
+  {/* Pilier 1 */}
+  <div className="pillar-card">
+    <div>
+      <div className="pillar-card-header">
+        <span className="pillar-number"><span>🌐</span> 01</span>
+        <span className="pillar-badge pillar-badge-orange">Standard W3C</span>
+      </div>
+      <h3 className="pillar-title">Custom Elements v1</h3>
+      <div className="pillar-subtitle pillar-subtitle-orange">Interopérabilité Universelle</div>
+      <p className="pillar-desc">Chaque composant hérite du standard natif du navigateur, enregistré via le registre global <code>customElements.define</code>. Zéro dépendance vers un framework propriétaire : interopérabilité directe et transparente avec React, Vue, Svelte, Astro et Angular.</p>
+    </div>
+  </div>
+
+{/* Pilier 2 */}
+
+<div className="pillar-card">
+  <div>
+    <div className="pillar-card-header">
+      <span className="pillar-number">
+        <span>⚡</span> 02
+      </span>
+      <span className="pillar-badge pillar-badge-green">~5 kB Gzippé</span>
+    </div>
+    <h3 className="pillar-title">Lit 3.3 Reactive Core</h3>
+    <div className="pillar-subtitle pillar-subtitle-green">Rendu Réactif Chirurgical</div>
+    <p className="pillar-desc">
+      Sans DOM Virtuel lourd ni surcharge mémoire. Lit analyse les gabarits tagged template literals
+      au premier rendu et procède à une mise à jour chirurgicale ultra-rapide des seules expressions
+      dynamiques modifiées.
+    </p>
+  </div>
+</div>
+
+{/* Pilier 3 */}
+
+<div className="pillar-card">
+  <div>
+    <div className="pillar-card-header">
+      <span className="pillar-number">
+        <span>🛡️</span> 03
+      </span>
+      <span className="pillar-badge pillar-badge-blue">Isolation Stricte</span>
+    </div>
+    <h3 className="pillar-title">Shadow DOM & CSS</h3>
+    <div className="pillar-subtitle pillar-subtitle-blue">Encapsulation Imperméable</div>
+    <p className="pillar-desc">
+      Isolation totale des styles au Shadow Root contre toute fuite externe ou conflit CSS global.
+      L'extension reste propre et contrôlée via les Design Tokens (<code>--edwyn-*</code>) et les
+      pseudo-éléments standard <code>::part()</code>.
+    </p>
+  </div>
+</div>
+
+{/* Pilier 4 */}
+
+  <div className="pillar-card">
+    <div>
+      <div className="pillar-card-header">
+        <span className="pillar-number"><span>🎨</span> 04</span>
+        <span className="pillar-badge pillar-badge-purple">Tokens & CEM</span>
+      </div>
+      <h3 className="pillar-title">Tokens & Tooling</h3>
+      <div className="pillar-subtitle pillar-subtitle-purple">Dual Theme & Autodocs</div>
+      <p className="pillar-desc">Spécifications Design Tokens W3C avec prise en charge native Dark Slate et Light Mode. Génération automatique du Custom Elements Manifest (<code>custom-elements.json</code>) et autocomplétion IDE WebStorm/VS Code.</p>
+    </div>
+  </div>
+</div>
+
+### 1. Standard W3C Custom Elements v1
+
+Chaque composant hérite de `LitElement` et s'enregistre via le registre global `customElements.define('edwyn-*')`. Cela garantit :
+
+- Zéro dépendance vers un framework tiers propriétaire.
+- Portabilité à 100% à travers le temps et les évolutions techniques de l'écosystème web.
+
+### 2. Lit 3.3 : Un Moteur Réactif Ultra-Léger
+
+Lit n'utilise pas de DOM Virtuel (vDOM) coûteux en mémoire. Il analyse les gabarits HTML tagged template literals (`html`...``) au premier rendu et met à jour chirurgicalement uniquement les nœuds DOM dynamiques modifiés.
+
+- Overhead runtime : **~5 kB** gzippé seulement.
+- Vitesse de mise à jour DOM égale ou supérieure aux frameworks JS les plus récents.
+
+### 3. Shadow DOM & Adopted StyleSheets
+
+Tous les styles des composants sont isolés à l'intérieur du Shadow Root :
+
+- **Imperméabilité CSS** : Aucun style externe (ex: un reset CSS global agressif ou des classes Tailwind globales) ne peut corrompre le rendu interne d'un composant Edwyn.
+- **Points d'extension standard** : La personnalisation s'effectue via les variables CSS (`var(--edwyn-*)`), les pseudo-éléments d'ombrage standard (`::part(name)`), et les slots de projection de contenu (`<slot name="prefix">`).
+
+### 4. Custom Elements Manifest (CEM) & Open Tooling
+
+Le projet génère automatiquement un fichier `custom-elements.json` conforme à la spécification W3C Open Web Components :
+
+- **Documentation automatique** : Storybook lit ce manifeste directement sans aucune configuration manuelle redondante.
+- **IntelliSense IDE** : Fichier `web-types.json` généré pour l'autocomplétion automatique dans WebStorm et VS Code.
+- **Garantie de typage** : Tous les attributs, propriétés, slots et événements sont typés et documentés à la source dans le code TypeScript.
+
+---
+
+## 📐 Anatomie d'un Composant Lit Edwyn
+
+Chaque composant dans `src/components/` suit un agencement rigoureux et testable :
+
+```
+src/components/button/
+├── edwyn-button.ts          # Définition de classe LitElement & Shadow DOM
+├── edwyn-button.stories.ts  # Stories Storybook CSF 3 & tests d'interaction
+└── index.ts                 # Export public du composant
+```
+
+### Exemple de Déclaration Typée
+
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+
+/**
+ * Bouton d'action standard d'Edwyn.
+ *
+ * @summary Bouton interactif avec variantes stylistiques
+ * @tag edwyn-button
+ *
+ * @slot - Libellé ou contenu principal du bouton
+ * @slot prefix - Icône ou élément visuel positionné avant le texte
+ * @slot suffix - Icône positionnée après le texte
+ *
+ * @csspart button - Élément HTML natif <button> interne
+ * @cssprop --edwyn-color-primary - Couleur d'accentuation principale
+ *
+ * @fires click - Émis lors du clic utilisateur
+ */
+@customElement('edwyn-button')
+export class EdwynButton extends LitElement {
+  @property({ type: String })
+  variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'simulator' = 'primary';
+
+  override render() {
+    return html`
+      <button part="button" class="btn btn-${this.variant}">
+        <slot name="prefix"></slot>
+        <slot></slot>
+        <slot name="suffix"></slot>
+      </button>
+    `;
+  }
+}
+```
+
+---
+
+## 🛡️ Stratégie de Qualité & Tests
+
+Le Design System applique les principes du **Software Craftsmanship** :
+
+- **Tests unitaires rapides** : Vitest avec environnement Happy DOM pour tester les propriétés, les slots, les classes CSS et les événements émis.
+- **Tests Storybook réels** : Exécution automatisée en navigateur Chromium headless via Playwright pour tester les play functions et les régressions visuelles / d'accessibilité.
+- **Audit Accessibilité a11y** : Validation continue WCAG 2.1 AA intégrée à la chaîne d'intégration.

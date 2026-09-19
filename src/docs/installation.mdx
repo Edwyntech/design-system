@@ -1,0 +1,98 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Getting Started/Installation & Setup" />
+
+# Installation & Configuration
+
+Ce guide détaille la mise en place du package `@edwyn-tech/design-system` dans un projet frontend moderne.
+
+---
+
+## 1. Installation via le gestionnaire de paquets
+
+Le Design System d'Edwyn utilise **Lit 3** comme dépendance de base. Installez le package ainsi que Lit :
+
+```bash
+# Avec npm
+npm install @edwyn-tech/design-system lit
+
+# Avec pnpm
+pnpm add @edwyn-tech/design-system lit
+
+# Avec yarn
+yarn add @edwyn-tech/design-system lit
+```
+
+---
+
+## 2. Import des Styles et Tokens CSS
+
+Pour que les polices de caractères (**Syne** et **Inter**) ainsi que les variables de thème (couleurs _Dark Slate_, _Orange Edwyn_, ombres et lueurs) soient actives, importez les feuilles de style dans le point d'entrée de votre application (ex: `index.html`, `main.ts`, `App.tsx`, etc.) :
+
+```typescript
+// Point d'entrée de votre application (ex: main.ts ou index.js)
+import '@edwyn-tech/design-system/tokens/typography.css';
+import '@edwyn-tech/design-system/tokens/tokens.css';
+```
+
+Ou directement dans votre code HTML via des balises `<link>` :
+
+```html
+<link rel="stylesheet" href="node_modules/@edwyn-tech/design-system/dist/tokens/typography.css" />
+<link rel="stylesheet" href="node_modules/@edwyn-tech/design-system/dist/tokens/tokens.css" />
+```
+
+---
+
+## 3. Utilisation des Composants
+
+Tous les composants sont des **Custom Elements W3C standard**. Il suffit de les importer une seule fois dans votre code pour enregistrer automatiquement la balise personnalisée dans le navigateur :
+
+```typescript
+// Importe et enregistre la balise <edwyn-button>
+import '@edwyn-tech/design-system/components/button';
+
+// Importe et enregistre la balise <edwyn-badge>
+import '@edwyn-tech/design-system/components/badge';
+```
+
+Une fois importé, utilisez-le directement dans votre balisage HTML :
+
+```html
+<edwyn-button variant="primary" size="md"> Explorer nos expertises </edwyn-button>
+
+<edwyn-badge variant="subtle" dot> Disponible immédiatement </edwyn-badge>
+```
+
+---
+
+## 4. Configuration TypeScript
+
+Si vous utilisez TypeScript avec du JSX/TSX (React, Preact, Solid), déclarez les Custom Elements dans le namespace JSX :
+
+```typescript
+// edwyn-elements.d.ts
+import type { EdwynButton } from '@edwyn-tech/design-system';
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'edwyn-button': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'simulator';
+        size?: 'sm' | 'md' | 'lg';
+        disabled?: boolean;
+        href?: string;
+      };
+    }
+  }
+}
+```
+
+---
+
+## 5. Performance & Tree Shaking
+
+Le package est publié sous format **ES Modules natifs** et supporte le tree-shaking granulaire :
+
+- Import global : `import '@edwyn-tech/design-system';` (charge l'ensemble des composants, ~12.8 kB gzippé).
+- Import granulaire : `import '@edwyn-tech/design-system/components/button';` (charge uniquement le composant requis et ses styles isolés, ~2 kB gzippé).

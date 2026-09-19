@@ -1,0 +1,310 @@
+<!-- Google Fonts: Syne, Inter, JetBrains Mono for Storybook Manager UI -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  /* Base typography & transitions for Edwyn Tech Storybook Manager */
+  body,
+  #storybook-sidebar-region,
+  .sidebar-header,
+  [role="toolbar"],
+  [role="tablist"],
+  [role="tabpanel"] {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease !important;
+  }
+
+  /* Centrage et presentation soignee du logo de marque Edwyn Tech */
+  .sidebar-header {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 16px 12px 14px !important;
+    margin-bottom: 6px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background-color: #292e30 !important;
+  }
+
+  /* Conteneur BrandArea centre sur toute la largeur */
+  .sidebar-header > div:first-child {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin-right: 0 !important;
+  }
+
+  /* Lien cliquable autour du logo */
+  .sidebar-header a {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 6px 12px !important;
+    border-radius: 8px !important;
+    background: transparent !important;
+    transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease !important;
+  }
+
+  .sidebar-header a:hover {
+    background-color: rgba(255, 255, 255, 0.04) !important;
+    transform: scale(1.02);
+  }
+
+  .sidebar-header a:focus-visible {
+    outline: 2px solid #f08200 !important;
+    outline-offset: 3px !important;
+  }
+
+  /* Logo de marque centre sans distorsion */
+  .sidebar-header img,
+  img[alt*="Edwyn Tech"] {
+    margin: 0 auto !important;
+    display: block !important;
+    max-width: 175px !important;
+    max-height: 48px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25)) !important;
+  }
+
+  /* Bouton d options (roue crantee / menu) place a droite sans briser le centrage */
+  .sidebar-header > button,
+  .sidebar-header button[aria-label*="menu" i],
+  .sidebar-header button[aria-label*="settings" i],
+  .sidebar-header button[aria-label*="Storybook" i],
+  .sidebar-header [class*="SidebarToggleButton"] {
+    position: absolute !important;
+    right: 8px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 5 !important;
+    opacity: 0.75 !important;
+    transition: opacity 0.2s ease, color 0.2s ease !important;
+  }
+
+  .sidebar-header button:hover {
+    opacity: 1 !important;
+    color: #f08200 !important;
+  }
+
+  /* Section roots / Category headings in Sidebar (FOUNDATIONS, COMPONENTS, PATTERNS) */
+  button[id*="collapse-root"],
+  .sidebar-subheading {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    font-size: 0.75rem !important;
+    color: #a3a8aa !important;
+  }
+
+  /* Sidebar tree links */
+  .sidebar-item {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.84375rem !important;
+    font-weight: 500 !important;
+    border-radius: 6px !important;
+    transition: all 0.15s ease !important;
+  }
+
+  /* Active item in Dark Mode */
+  .sidebar-item[data-selected="true"],
+  .sidebar-item.selected {
+    background-color: rgba(240, 130, 0, 0.16) !important;
+    color: #ff8f1a !important;
+    font-weight: 600 !important;
+    border-left: 3px solid #f08200 !important;
+  }
+
+  /* Manager Toolbar & Tabs */
+  [role="tablist"] [role="tab"] {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    transition: all 0.15s ease !important;
+  }
+
+  [role="tablist"] [role="tab"][aria-selected="true"] {
+    font-weight: 600 !important;
+    color: #f08200 !important;
+    border-bottom: 2px solid #f08200 !important;
+  }
+
+  /* Scrollbar sombre Edwyn */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #292e30;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f08200;
+  }
+
+  /* ==========================================================================
+     LIGHT THEME OVERRIDES FOR STORYBOOK MANAGER (Sidebar, Toolbar, Navigation)
+     ========================================================================== */
+  [data-theme='light'] body,
+  body.theme-light {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] #storybook-sidebar-region,
+  .theme-light #storybook-sidebar-region {
+    background-color: #ffffff !important;
+    border-right: 1px solid #e2e8f0 !important;
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .sidebar-header,
+  .theme-light .sidebar-header {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .sidebar-header a:hover,
+  .theme-light .sidebar-header a:hover {
+    background-color: rgba(0, 0, 0, 0.04) !important;
+  }
+
+  [data-theme='light'] .sidebar-header img,
+  .theme-light .sidebar-header img,
+  [data-theme='light'] img[alt*="Edwyn Tech"],
+  .theme-light img[alt*="Edwyn Tech"] {
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08)) !important;
+  }
+
+  /* Search input in Light Mode */
+  [data-theme='light'] #storybook-explorer-searchfield,
+  .theme-light #storybook-explorer-searchfield {
+    color: #0f172a !important;
+    background-color: #f1f5f9 !important;
+    border: 1px solid #cbd5e1 !important;
+    font-family: 'Inter', sans-serif !important;
+  }
+
+  [data-theme='light'] #storybook-explorer-searchfield::placeholder,
+  .theme-light #storybook-explorer-searchfield::placeholder {
+    color: #64748b !important;
+  }
+
+  [data-theme='light'] #storybook-explorer-searchfield:focus,
+  .theme-light #storybook-explorer-searchfield:focus {
+    border-color: #f08200 !important;
+    box-shadow: 0 0 0 2px rgba(240, 130, 0, 0.2) !important;
+    outline: none !important;
+  }
+
+  [data-theme='light'] button[id*="collapse-root"],
+  .theme-light button[id*="collapse-root"],
+  [data-theme='light'] .sidebar-subheading,
+  .theme-light .sidebar-subheading {
+    color: #64748b !important;
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 700 !important;
+  }
+
+  [data-theme='light'] .sidebar-item,
+  .theme-light .sidebar-item {
+    color: #1e293b !important;
+  }
+
+  [data-theme='light'] .sidebar-item:hover,
+  .theme-light .sidebar-item:hover {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+  }
+
+  /* Active item in Light Mode with AA compliant contrast */
+  [data-theme='light'] .sidebar-item[data-selected="true"],
+  .theme-light .sidebar-item[data-selected="true"],
+  [data-theme='light'] .sidebar-item.selected,
+  .theme-light .sidebar-item.selected {
+    background-color: rgba(240, 130, 0, 0.12) !important;
+    color: #c2410c !important;
+    font-weight: 600 !important;
+    border-left: 3px solid #f08200 !important;
+  }
+
+  /* Top Toolbar in Light Mode */
+  [data-theme='light'] [role="toolbar"],
+  .theme-light [role="toolbar"] {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] [role="toolbar"] button,
+  .theme-light [role="toolbar"] button {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] [role="toolbar"] button:hover,
+  .theme-light [role="toolbar"] button:hover {
+    color: #c2410c !important;
+    background-color: #f1f5f9 !important;
+  }
+
+  [data-theme='light'] [role="toolbar"] button[aria-selected="true"],
+  .theme-light [role="toolbar"] button[aria-selected="true"] {
+    color: #c2410c !important;
+  }
+
+  /* Manager Bottom Addon Panel in Light Mode */
+  [data-theme='light'] [role="main"] > div:last-child,
+  .theme-light [role="main"] > div:last-child,
+  [data-theme='light'] [id*="panel-tab-content"],
+  .theme-light [id*="panel-tab-content"] {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] [role="tablist"],
+  .theme-light [role="tablist"] {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] [role="tablist"] [role="tab"],
+  .theme-light [role="tablist"] [role="tab"] {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] [role="tablist"] [role="tab"]:hover,
+  .theme-light [role="tablist"] [role="tab"]:hover {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] [role="tablist"] [role="tab"][aria-selected="true"],
+  .theme-light [role="tablist"] [role="tab"][aria-selected="true"] {
+    color: #c2410c !important;
+    border-bottom: 2px solid #f08200 !important;
+  }
+
+  /* Light mode scrollbars in manager */
+  [data-theme='light'] ::-webkit-scrollbar-track,
+  .theme-light ::-webkit-scrollbar-track {
+    background: #f1f5f9 !important;
+  }
+  [data-theme='light'] ::-webkit-scrollbar-thumb,
+  .theme-light ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15) !important;
+  }
+  [data-theme='light'] ::-webkit-scrollbar-thumb:hover,
+  .theme-light ::-webkit-scrollbar-thumb:hover {
+    background: rgba(240, 130, 0, 0.7) !important;
+  }
+</style>

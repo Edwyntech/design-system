@@ -1,0 +1,28 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+storybook-static
+coverage
+
+# Manifests generated at build
+web-types.json
+custom-elements.json
+
+# Local & environment
+*.local
+.DS_Store
+
+# IDEs
+.idea
+.vscode/*
+!.vscode/extensions.json

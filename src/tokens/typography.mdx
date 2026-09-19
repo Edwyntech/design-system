@@ -1,0 +1,69 @@
+import { Meta, Typeset } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Typography" />
+
+# Système Typographique
+
+Le système typographique d'Edwyn associe deux polices complémentaires :
+
+- **Syne** : Typographie géométrique expressive, audacieuse et distinctive, réservée aux titres d'en-tête (H1, H2, H3), aux chiffres clés et à la signature de marque.
+- **Inter** : Typographie sans-serif de référence internationale, conçue spécifiquement pour la lisibilité sur écrans d'ordinateurs et mobiles pour les corps de texte, formulaires et composants denses.
+
+---
+
+## 🔠 Syne — Titres & Identité Forte
+
+- **Variable CSS** : `var(--edwyn-font-heading)`
+- **Graisse recommandée** : Bold (700) ou Extra-Bold (800)
+- **Usage** : Titres de sections, bandeaux Hero, métriques géantes, branding.
+
+### Syne Bold (700)
+
+<Typeset
+  fontFamily="'Syne', -apple-system, BlinkMacSystemFont, sans-serif"
+  fontSizes={['24px', '30px', '36px', '48px', '60px']}
+  fontWeight={700}
+  sampleText="L'ESN Alternative : Transparence & Craftsmanship"
+/>
+
+---
+
+## 📄 Inter — Corps de Texte & Données
+
+- **Variable CSS** : `var(--edwyn-font-body)`
+- **Graisses recommandées** : Regular (400), Medium (500), Semi-Bold (600)
+- **Usage** : Paragraphes explicatifs, tableaux, champs de saisie, badges, navigation.
+
+### Inter Regular (400)
+
+<Typeset
+  fontFamily="'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+  fontSizes={['12px', '14px', '16px', '18px', '20px']}
+  fontWeight={400}
+  sampleText="Un modèle transparent où 100% de la marge excédentaire est redistribuée."
+/>
+
+### Inter Semi-Bold (600)
+
+<Typeset
+  fontFamily="'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+  fontSizes={['12px', '14px', '16px', '18px', '20px']}
+  fontWeight={600}
+  sampleText="Excellence technique, Architecture Hexagonale et Software Craftsmanship."
+/>
+
+---
+
+## 📏 Tableau Récapitulatif des Tailles
+
+| Token CSS                | Taille (rem) | Équivalent (px) | Usage Idéal                                        |
+| :----------------------- | :----------- | :-------------- | :------------------------------------------------- |
+| `--edwyn-font-size-xs`   | `0.75rem`    | `12px`          | Badges compacts, légendes, mentions de bas de page |
+| `--edwyn-font-size-sm`   | `0.875rem`   | `14px`          | Helper texts, menus de navigation secondaires      |
+| `--edwyn-font-size-base` | `1rem`       | `16px`          | Corps de texte principal, boutons standard, inputs |
+| `--edwyn-font-size-lg`   | `1.125rem`   | `18px`          | Paragraphes d'introduction, sous-titres de cartes  |
+| `--edwyn-font-size-xl`   | `1.25rem`    | `20px`          | Titres de cartes et sous-sections H4               |
+| `--edwyn-font-size-2xl`  | `1.5rem`     | `24px`          | Titres de blocs H3                                 |
+| `--edwyn-font-size-3xl`  | `1.875rem`   | `30px`          | Titres de chapitres H2                             |
+| `--edwyn-font-size-4xl`  | `2.25rem`    | `36px`          | Grands titres H1                                   |
+| `--edwyn-font-size-5xl`  | `3rem`       | `48px`          | Accroches Hero Banner                              |

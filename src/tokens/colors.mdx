@@ -1,0 +1,158 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Colors" />
+
+# Couleurs & Dual Theme
+
+Le Design System Edwyn propose une architecture **Dual Theme** native : le thème **Dark Slate** officiel (utilisé en production sur [edwyn.tech](https://www.edwyn.tech)) et le nouveau thème **Light Mode**, tous deux conçus pour respecter les ratios d'accessibilité WCAG 2.1 AA et APCA.
+
+---
+
+## 🟠 Orange Signature (Brand Accent Universel)
+
+L'orange signature est la constante visuelle d'Edwyn à travers tous les thèmes. Il symbolise le dynamisme, l'authenticité et la transparence de l'ESN alternative. Il est réservé aux actions prioritaires, aux curseurs de simulation, aux CTA et aux indicateurs clés.
+
+<ColorPalette>
+  <ColorItem
+    title="Orange Primaire"
+    subtitle="Interactions principales (Dark & Light)"
+    colors={{
+      'Primary Base (--edwyn-color-primary)': '#f08200',
+      'Primary Hover (--edwyn-color-primary-hover)': '#ff8f1a',
+      'Primary Active (--edwyn-color-primary-active)': '#d97400',
+      'Primary Contrast (--edwyn-color-primary-contrast)': '#0f172a',
+    }}
+  />
+  <ColorItem
+    title="Transparences Orange"
+    subtitle="Halos, reflets et fonds subtils"
+    colors={{
+      'Alpha 10% (--edwyn-color-primary-alpha-10)': 'rgba(240, 130, 0, 0.10)',
+      'Alpha 20% (--edwyn-color-primary-alpha-20)': 'rgba(240, 130, 0, 0.20)',
+      'Alpha 30% (--edwyn-color-primary-alpha-30)': 'rgba(240, 130, 0, 0.30)',
+      'Alpha 50%': 'rgba(240, 130, 0, 0.50)',
+    }}
+  />
+</ColorPalette>
+
+---
+
+## 🌘 Thème Dark Slate (Officiel / Site Public)
+
+Le Dark Slate `#292e30` est l'identité historique et officielle du site [edwyn.tech](https://www.edwyn.tech). Il garantit une ambiance sobre, haut de gamme et immersive.
+
+<ColorPalette>
+  <ColorItem
+    title="Surfaces Dark Slate"
+    subtitle="Élévations sombres officielles"
+    colors={{
+      'Dark Slate Background (--edwyn-color-bg)': '#292e30',
+      'Darker Surface (--edwyn-color-surface-darker)': '#1e2224',
+      'Elevated Surface (--edwyn-color-surface-elevated)': '#32383a',
+      'Muted Surface (--edwyn-color-surface-muted)': '#404648',
+    }}
+  />
+  <ColorItem
+    title="Glassmorphism Sombre"
+    subtitle="Fonds translucides et cartes"
+    colors={{
+      'Card Glass (--edwyn-color-card)': 'rgba(255, 255, 255, 0.051)',
+      'Card Hover': 'rgba(255, 255, 255, 0.08)',
+      'Atmospheric Veil (--edwyn-color-overlay)': 'rgba(0, 0, 0, 0.65)',
+    }}
+  />
+  <ColorItem
+    title="Typographie sur Fond Sombre"
+    subtitle="Contraste de lecture optimisé"
+    colors={{
+      'Text White 100% (--edwyn-color-text)': '#ffffff',
+      'Text 85% (--edwyn-color-text-white-85)': 'rgba(255, 255, 255, 0.85)',
+      'Text Muted 70% (--edwyn-color-text-muted)': 'rgba(255, 255, 255, 0.70)',
+      'Text Dim 50% (--edwyn-color-text-dim)': 'rgba(255, 255, 255, 0.50)',
+    }}
+  />
+</ColorPalette>
+
+---
+
+## ☀️ Nouveau Thème Light Mode (Surfaces Claires)
+
+Le nouveau thème clair apporte une lisibilité maximale en environnement lumineux (bureaux ensoleillés, dashboards administratifs, documentation technique imprimable).
+
+<ColorPalette>
+  <ColorItem
+    title="Surfaces Light Mode"
+    subtitle="Fonds clairs épurés et cartes blanches"
+    colors={{
+      'Slate 50 Background (--edwyn-color-bg)': '#f8fafc',
+      'Slate 100 Secondary (--edwyn-color-secondary)': '#f1f5f9',
+      'Slate 200 Muted (--edwyn-color-muted)': '#e2e8f0',
+      'Pure White Card (--edwyn-color-bg-darker)': '#ffffff',
+    }}
+  />
+  <ColorItem
+    title="Glassmorphism Clair"
+    subtitle="Surfaces lumineuses et voiles discrets"
+    colors={{
+      'Card Light Glass (--edwyn-color-card)': 'rgba(255, 255, 255, 0.90)',
+      'Card Light Hover': '#ffffff',
+      'Light Overlay (--edwyn-color-overlay)': 'rgba(15, 23, 42, 0.40)',
+    }}
+  />
+  <ColorItem
+    title="Typographie sur Fond Clair"
+    subtitle="Slate foncé à contraste élevé (WCAG AAA)"
+    colors={{
+      'Slate 900 Text (--edwyn-color-text)': '#0f172a',
+      'Slate 800 Subtitle (--edwyn-color-text-white-85)': '#1e293b',
+      'Slate 600 Muted (--edwyn-color-text-muted)': '#64748b',
+      'Slate 400 Dim (--edwyn-color-text-dim)': '#94a3b8',
+    }}
+  />
+</ColorPalette>
+
+---
+
+## 🚦 Couleurs Sémantiques & Statuts
+
+Partagées entre Dark Slate et Light Mode, calibrées pour garantir une lisibilité sans équivoque des métriques et retours opérationnels.
+
+<ColorPalette>
+  <ColorItem
+    title="Statuts & Métriques"
+    subtitle="Indicateurs universels de succès, alerte et information"
+    colors={{
+      'Success (--edwyn-color-success)': '#00c758',
+      'Warning (--edwyn-color-warning)': '#f59e0b',
+      'Error (--edwyn-color-error)': '#fb2c36',
+      'Info (--edwyn-color-info)': '#3080ff',
+      'Craft Purple (--edwyn-color-purple)': '#ac4bff',
+    }}
+  />
+</ColorPalette>
+
+---
+
+## 💻 Activation du Thème en Production
+
+Le basculement dynamique du thème s'effectue via l'attribut standard HTML `data-theme` ou la classe CSS `.theme-light` :
+
+```html
+<!-- Activation globale via le document root -->
+<html lang="fr" data-theme="light">
+  <body>
+    <!-- Tous les composants s'adaptent instantanément -->
+    <edwyn-button variant="secondary">Mon Bouton</edwyn-button>
+    <edwyn-slider label="TJM" .value="650"></edwyn-slider>
+  </body>
+</html>
+
+<!-- Ou isolation locale sur un conteneur spécifique -->
+<div class="theme-light">
+  <edwyn-card>
+    <h3 slot="title">Carte Thème Clair</h3>
+  </edwyn-card>
+</div>
+```
+
+> 💡 **Bascule Storybook** : Utilisez l'icône de thème (Soleil / Lune) dans la barre d'outils en haut de Storybook pour permuter instantanément l'ensemble des composants entre le Dark Slate et le Light Theme !

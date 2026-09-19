@@ -1,0 +1,52 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Syne:wght@400..800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--edwyn-color-bg, #292e30);
+    color: var(--edwyn-color-text, #ffffff);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  /* Custom scrollbar matching Edwyn Tech */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1e2224;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(240, 130, 0, 0.5);
+  }
+
+  /* Light mode scrollbar */
+  [data-theme='light'] ::-webkit-scrollbar-track,
+  .theme-light ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+
+  [data-theme='light'] ::-webkit-scrollbar-thumb,
+  .theme-light ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  [data-theme='light'] ::-webkit-scrollbar-thumb:hover,
+  .theme-light ::-webkit-scrollbar-thumb:hover {
+    background: rgba(240, 130, 0, 0.7);
+  }
+</style>

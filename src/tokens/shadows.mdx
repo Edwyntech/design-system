@@ -1,0 +1,69 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Shadows, Glows & Glass" />
+
+# Ombres, Lueurs & Glassmorphism
+
+L'atmosphère visuelle d'Edwyn se caractérise par des jeux d'ombres douces combinés à des **halos lumineux orange signature** et un effet de verre dépoli (**glassmorphism**).
+
+---
+
+## 🌟 Lueurs Orange Signature (Glows)
+
+Les lueurs orange créent une aura chaleureuse autour des éléments décisifs et renforcent l'identité visuelle de marque dans l'obscurité du thème Dark Slate tout en s'adaptant élégamment au Light Mode.
+
+| Token CSS                | Définition                           | Rendu & Usage                         |
+| :----------------------- | :----------------------------------- | :------------------------------------ |
+| `--edwyn-glow-orange-sm` | `0 0 15px rgba(240, 130, 0, 0.30)`   | Survol de cartes, focus de boutons    |
+| `--edwyn-glow-orange-md` | `0 0 30px rgba(240, 130, 0, 0.20)`   | Cartes mises en avant (`highlighted`) |
+| `--edwyn-glow-orange-lg` | `0 0 40px rgba(240, 130, 0, 0.10)`   | Halos d'arrière-plan de section       |
+| `--edwyn-glow-button`    | `0 4px 20px rgba(240, 130, 0, 0.35)` | Boutons CTA simulateur et primary     |
+
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+  gap: '1.5rem',
+  marginTop: '2rem',
+  marginBottom: '2.5rem'
+}}>
+  <div className="glow-card glow-card-sm">
+    <strong>Glow Orange SM</strong>
+    <p>15px • Opacité 30%</p>
+  </div>
+
+<div className="glow-card glow-card-md">
+  <strong>Glow Orange MD</strong>
+  <p>30px • Opacité 20%</p>
+</div>
+
+  <div className="glow-card glow-card-btn">
+    <strong>Glow Button CTA</strong>
+    <p>Profondeur d'action</p>
+  </div>
+</div>
+
+---
+
+## 🌫️ Effet Glassmorphism & Flous d'Arrière-Plan
+
+Le glassmorphism combine une faible opacité de blanc sur fond ardoise avec la propriété CSS `backdrop-filter: blur(...)` :
+
+```css
+/* Style canonique d'une surface Glassmorphism Edwyn */
+.edwyn-glass {
+  background: var(--edwyn-color-card, rgba(255, 255, 255, 0.051));
+  border: 1px solid var(--edwyn-color-border, rgba(255, 255, 255, 0.08));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--edwyn-radius-xl, 12px);
+}
+```
+
+### Échelle des Flous (Blurs)
+
+| Token | Valeur CSS   | Composant de Référence                          |
+| :---- | :----------- | :---------------------------------------------- |
+| `sm`  | `blur(8px)`  | Badges variante glass, info-bulles              |
+| `md`  | `blur(12px)` | Barre de navigation supérieure (`edwyn-navbar`) |
+| `xl`  | `blur(24px)` | Cartes interactives (`edwyn-card`), modales     |
+| `3xl` | `blur(64px)` | Arrière-plans décoratifs et halos diffus        |

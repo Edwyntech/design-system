@@ -1,0 +1,989 @@
+/* Custom Documentation Styling for Edwyn Tech Storybook */
+
+/* ==========================================================================
+   STORYBOOK DOCS CORE TYPOGRAPHY & LAYOUT
+   ========================================================================== */
+
+.sbdocs,
+.sbdocs-content,
+.sbdocs-wrapper {
+  font-family: var(--edwyn-font-body, 'Inter', sans-serif) !important;
+  color: var(--edwyn-color-text, #ffffff) !important;
+  line-height: 1.6 !important;
+}
+
+.sbdocs h1,
+.sbdocs h2,
+.sbdocs h3,
+.sbdocs h4,
+.sbdocs h5,
+.sbdocs h6 {
+  font-family: var(--edwyn-font-heading, 'Syne', sans-serif) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--edwyn-color-text, #ffffff) !important;
+  margin-top: 1.75em !important;
+  margin-bottom: 0.75em !important;
+}
+
+.sbdocs h1 {
+  font-size: 2.25rem !important;
+  font-weight: 800 !important;
+}
+
+.sbdocs h2 {
+  font-size: 1.625rem !important;
+  border-bottom: 1px solid var(--edwyn-color-border-bright, rgba(255, 255, 255, 0.15)) !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.sbdocs h3 {
+  font-size: 1.25rem !important;
+}
+
+.sbdocs p,
+.sbdocs li {
+  font-family: var(--edwyn-font-body, 'Inter', sans-serif) !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.65 !important;
+  color: var(--edwyn-color-text-white-85, rgba(255, 255, 255, 0.85)) !important;
+}
+
+.sbdocs hr {
+  border: 0 !important;
+  border-top: 1px solid var(--edwyn-color-border, rgba(255, 255, 255, 0.08)) !important;
+  margin: 2.5rem 0 !important;
+}
+
+.sbdocs a:not(.welcome-cta-btn) {
+  color: var(--edwyn-color-primary-hover, #ff8f1a) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  font-weight: 500 !important;
+  transition: color 0.15s ease !important;
+}
+
+.sbdocs a:not(.welcome-cta-btn):hover {
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   CODE & PRE BLOCKS (Terminal Style for High Legibility in Both Themes)
+   ========================================================================== */
+.sbdocs pre,
+.sbdocs-content pre,
+.sbdocs-wrapper pre {
+  font-family: var(--edwyn-font-mono, 'JetBrains Mono', monospace) !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background-color: #161a1c !important; /* Deep dark terminal background */
+  color: #f8fafc !important;
+  padding: 1rem 1.25rem !important;
+  font-size: 0.84375rem !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+.sbdocs pre code,
+.sbdocs-content pre code,
+.sbdocs-wrapper pre code {
+  color: #f8fafc !important;
+  background: transparent !important;
+  border: none !important;
+  font-size: inherit !important;
+}
+
+/* Inline code tags (Dark Mode default) */
+.sbdocs code:not(pre code),
+.sbdocs-content code:not(pre code),
+.sbdocs table code,
+.sbdocs-content table code {
+  font-family: var(--edwyn-font-mono, 'JetBrains Mono', monospace) !important;
+  font-size: 0.8125rem !important;
+  padding: 0.2rem 0.45rem !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #ffa333 !important; /* High contrast luminous amber (7.8:1 AAA on #1e2224, 7.1:1 on #252a2c) */
+  border-radius: 4px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+}
+
+/* ==========================================================================
+   MARKDOWN & GFM TABLES (Dark Mode default)
+   ========================================================================== */
+.sbdocs table,
+.sbdocs-content table,
+.sbdocs-preview table,
+table:not(.docblock-argstable):not(.sb-argstableBlock) {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  margin: 1.5rem 0 2rem 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background-color: #1e2224 !important;
+  font-size: 0.875rem !important;
+  font-family: var(--edwyn-font-body, 'Inter', sans-serif) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+.sbdocs table thead,
+.sbdocs-content table thead,
+table:not(.docblock-argstable):not(.sb-argstableBlock) thead {
+  background-color: #292e30 !important;
+}
+
+.sbdocs table th,
+.sbdocs-content table th,
+table:not(.docblock-argstable):not(.sb-argstableBlock) th {
+  padding: 0.875rem 1rem !important;
+  text-align: left !important;
+  font-family: var(--edwyn-font-heading, 'Syne', sans-serif) !important;
+  font-weight: 700 !important;
+  font-size: 0.875rem !important;
+  color: #ffffff !important;
+  letter-spacing: -0.01em !important;
+  background-color: #292e30 !important;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+/* Explicitly set tr backgrounds to override Storybook Emotion tr:nth-of-type(2n) */
+.sbdocs table tr,
+.sbdocs-content table tr,
+table:not(.docblock-argstable):not(.sb-argstableBlock) tr,
+.sbdocs table tbody tr,
+.sbdocs-content table tbody tr,
+.sbdocs-wrapper tr,
+.sbdocs-content tr {
+  background-color: #1e2224 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.sbdocs table tr:nth-of-type(2n),
+.sbdocs-content table tr:nth-of-type(2n),
+table:not(.docblock-argstable):not(.sb-argstableBlock) tr:nth-of-type(2n),
+.sbdocs table tbody tr:nth-of-type(2n),
+.sbdocs-content table tbody tr:nth-of-type(2n),
+.sbdocs-wrapper tr:nth-of-type(2n),
+.sbdocs-content tr:nth-of-type(2n) {
+  background-color: #252a2c !important; /* Subtle, harmonized dark slate */
+}
+
+.sbdocs table tbody tr:hover,
+.sbdocs-content table tbody tr:hover,
+table:not(.docblock-argstable):not(.sb-argstableBlock) tbody tr:hover,
+.sbdocs table tbody tr:hover td,
+.sbdocs-content table tbody tr:hover td {
+  background-color: #303639 !important;
+}
+
+.sbdocs table td,
+.sbdocs-content table td,
+table:not(.docblock-argstable):not(.sb-argstableBlock) td {
+  padding: 0.875rem 1rem !important;
+  text-align: left !important;
+  vertical-align: middle !important;
+  color: #f1f5f9 !important; /* Crisp high-contrast white-slate (13.5:1) */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  background-color: transparent !important;
+}
+
+.sbdocs table td strong,
+.sbdocs-content table td strong {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.sbdocs table tbody tr:last-child td,
+.sbdocs-content table tbody tr:last-child td,
+table:not(.docblock-argstable):not(.sb-argstableBlock) tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* ==========================================================================
+   STORYBOOK TYPESET BLOCK (Foundations/Typography)
+   ========================================================================== */
+.docblock-typeset {
+  border-radius: 12px !important;
+  background-color: #1e2224 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+  padding: 1.75rem 1.5rem !important;
+}
+
+.docblock-typeset * {
+  color: #ffffff !important;
+}
+
+.docblock-typeset > div > div:first-child,
+.docblock-typeset [class*='css-'] > div:first-child {
+  color: #94a3b8 !important; /* Font size tags e.g. 24px, 30px (6.8:1 AAA on #1e2224) */
+  font-family: var(--edwyn-font-mono, monospace) !important;
+  font-weight: 500 !important;
+}
+
+/* ==========================================================================
+   STORYBOOK COLORPALETTE BLOCK (Foundations/Colors)
+   ========================================================================== */
+.docblock-colorpalette {
+  margin: 1.5rem 0 2.5rem 0 !important;
+}
+
+.docblock-colorpalette [class*='title'],
+.docblock-colorpalette h4 {
+  color: #ffffff !important;
+  font-family: var(--edwyn-font-heading, 'Syne', sans-serif) !important;
+  font-weight: 700 !important;
+}
+
+.docblock-colorpalette [class*='subtitle'] {
+  color: #a3a8aa !important;
+  font-family: var(--edwyn-font-body, 'Inter', sans-serif) !important;
+}
+
+.docblock-colorpalette span {
+  color: #cbd5e1 !important;
+}
+
+/* ==========================================================================
+   STORYBOOK ARGSTABLE HARMONIZATION
+   ========================================================================== */
+.docblock-argstable {
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background-color: #1e2224 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+.docblock-argstable th {
+  background-color: #292e30 !important;
+  color: #ffffff !important;
+  font-family: var(--edwyn-font-heading, 'Syne', sans-serif) !important;
+  font-weight: 700 !important;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.docblock-argstable tr,
+.sb-argstableBlock tr {
+  background-color: #1e2224 !important;
+}
+
+.docblock-argstable tr:nth-of-type(2n),
+.sb-argstableBlock tr:nth-of-type(2n) {
+  background-color: #252a2c !important;
+}
+
+.docblock-argstable td,
+.sb-argstableBlock td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  color: #f1f5f9 !important;
+  background-color: transparent !important;
+}
+
+/* ==========================================================================
+   STORY CANVAS PREVIEWS
+   ========================================================================== */
+.sbdocs-preview,
+.docs-story {
+  border-radius: 12px !important;
+  border: 1px solid var(--edwyn-color-border-bright, rgba(255, 255, 255, 0.15)) !important;
+  background-color: var(--edwyn-color-bg, #292e30) !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ==========================================================================
+   WELCOME HERO BANNER, PILLARS & GLOW CARDS
+   ========================================================================== */
+.sbdocs .welcome-hero-banner,
+.sbdocs-content .welcome-hero-banner,
+.welcome-hero-banner {
+  background-color: #1e2224 !important;
+  background-image: linear-gradient(135deg, rgba(240, 130, 0, 0.15) 0%, rgba(30, 34, 36, 0.95) 100%) !important;
+  border: 1px solid rgba(240, 130, 0, 0.3) !important;
+  border-radius: 16px !important;
+  padding: 2.25rem 2.25rem !important;
+  margin-bottom: 2.5rem !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.sbdocs .welcome-hero-title,
+.sbdocs-content .welcome-hero-title,
+h1.welcome-hero-title,
+.welcome-hero-title {
+  font-family: var(--edwyn-font-heading, 'Syne', sans-serif) !important;
+  font-size: clamp(1.65rem, 2.75vw, 2.25rem) !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  margin: 0 0 1rem 0 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
+  display: block !important;
+  white-space: normal !important;
+}
+
+@media (min-width: 600px) {
+  .sbdocs .welcome-hero-title,
+  .sbdocs-content .welcome-hero-title,
+  h1.welcome-hero-title,
+  .welcome-hero-title {
+    white-space: nowrap !important;
+  }
+}
+
+.welcome-hero-title * {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+  color: inherit !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline !important;
+}
+
+.welcome-hero-title .highlight-orange {
+  color: var(--edwyn-color-primary, #f08200) !important;
+  white-space: nowrap !important;
+}
+
+.welcome-hero-desc {
+  font-family: var(--edwyn-font-body, 'Inter', sans-serif) !important;
+  font-size: 1.0625rem !important;
+  color: #cbd5e1 !important;
+  max-width: 740px !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+
+.welcome-hero-meta {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  margin-bottom: 1.5rem !important;
+  flex-wrap: wrap !important;
+}
+
+.welcome-badge-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #f08200 !important;
+  background-image: linear-gradient(135deg, #f08200 0%, #d97400 100%) !important;
+  color: #0f172a !important; /* High contrast AAA 7.21:1 */
+  font-weight: 700 !important;
+  font-size: 0.75rem !important;
+  line-height: 1 !important;
+  padding: 0.35rem 0.75rem !important;
+  border-radius: 9999px !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 2px 8px rgba(240, 130, 0, 0.3) !important;
+}
+
+.welcome-meta-desc {
+  display: inline-flex !important;
+  align-items: center !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 0.875rem !important;
+  line-height: 1 !important;
+}
+
+.welcome-cta-card {
+  margin-top: 3rem !important;
+  padding: 1.5rem !important;
+  background-color: #1e2224 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 1rem !important;
+}
+
+.welcome-cta-title {
+  margin: 0 0 0.25rem 0 !important;
+  color: #ffffff !important;
+  font-family: var(--edwyn-font-heading, 'Syne', sans-serif) !important;
+  font-weight: 700 !important;
+}
+
+.welcome-cta-desc {
+  margin: 0 !important;
+  color: #a3a8aa !important;
+  font-size: 0.875rem !important;
+}
+
+.welcome-cta-btn,
+.sbdocs .welcome-cta-btn,
+.sbdocs a.welcome-cta-btn {
+  background-color: #f08200 !important;
+  color: #0f172a !important; /* AAA contrast 7.21:1 */
+  font-weight: 700 !important;
+  padding: 0.6rem 1.4rem !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  font-size: 0.875rem !important;
+  box-shadow: 0 2px 10px rgba(240, 130, 0, 0.35) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  border: none !important;
+  transition: transform 0.15s ease, background-color 0.15s ease !important;
+}
+
+.welcome-cta-btn:hover,
+.sbdocs .welcome-cta-btn:hover,
+.sbdocs a.welcome-cta-btn:hover {
+  background-color: #ff8f1a !important;
+  color: #0f172a !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Glow Demo Cards (Foundations/Shadows) */
+.glow-card {
+  background: #1e2224 !important;
+  border-radius: 12px !important;
+  padding: 1.5rem !important;
+  text-align: center !important;
+  transition: transform 0.2s ease !important;
+}
+
+.glow-card-sm {
+  border: 1px solid rgba(240, 130, 0, 0.3) !important;
+  box-shadow: 0 0 15px rgba(240, 130, 0, 0.3) !important;
+}
+
+.glow-card-md {
+  border: 1px solid rgba(240, 130, 0, 0.5) !important;
+  box-shadow: 0 0 30px rgba(240, 130, 0, 0.2) !important;
+}
+
+.glow-card-btn {
+  border: 1px solid rgba(240, 130, 0, 0.2) !important;
+  box-shadow: 0 4px 20px rgba(240, 130, 0, 0.35) !important;
+}
+
+.glow-card strong {
+  color: #f08200 !important;
+  display: block !important;
+}
+
+.glow-card p {
+  color: #a3a8aa !important;
+  font-size: 0.8125rem !important;
+  margin: 0.5rem 0 0 0 !important;
+}
+
+/* Pillars 2x2 Grid (Foundations/Architecture) */
+.sbdocs .pillars-grid-2x2,
+.sbdocs-content .pillars-grid-2x2,
+.pillars-grid-2x2,
+.sbdocs .pillars-row,
+.sbdocs-content .pillars-row,
+.pillars-row {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 1.5rem !important;
+  margin: 2rem 0 2.5rem 0 !important;
+  width: 100% !important;
+  align-items: stretch !important;
+}
+
+@media (max-width: 680px) {
+  .sbdocs .pillars-grid-2x2,
+  .sbdocs-content .pillars-grid-2x2,
+  .pillars-grid-2x2,
+  .sbdocs .pillars-row,
+  .sbdocs-content .pillars-row,
+  .pillars-row {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.pillar-card {
+  background-color: #1e2224 !important;
+  background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%) !important;
+  border: 1px solid rgba(240, 130, 0, 0.25) !important;
+  border-radius: 14px !important;
+  padding: 1.75rem 1.6rem !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.pillar-card:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(240, 130, 0, 0.5) !important;
+  box-shadow: 0 8px 28px rgba(240, 130, 0, 0.15) !important;
+}
+
+.pillar-card-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 0.85rem !important;
+}
+
+.pillar-number {
+  font-family: var(--edwyn-font-heading, 'Syne', sans-serif) !important;
+  font-weight: 800 !important;
+  font-size: 1.35rem !important;
+  color: #f08200 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.pillar-badge {
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  padding: 0.25rem 0.65rem !important;
+  border-radius: 9999px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+}
+
+.pillar-badge-orange {
+  background: rgba(240, 130, 0, 0.15) !important;
+  color: #f08200 !important;
+  border: 1px solid rgba(240, 130, 0, 0.3) !important;
+}
+
+.pillar-badge-green {
+  background: rgba(0, 199, 88, 0.15) !important;
+  color: #00c758 !important;
+  border: 1px solid rgba(0, 199, 88, 0.3) !important;
+}
+
+.pillar-badge-blue {
+  background: rgba(48, 128, 255, 0.15) !important;
+  color: #3080ff !important;
+  border: 1px solid rgba(48, 128, 255, 0.3) !important;
+}
+
+.pillar-badge-purple {
+  background: rgba(172, 75, 255, 0.15) !important;
+  color: #d9b3ff !important; /* Luminous violet for dark mode (8.2:1 AAA on #1e2224) */
+  border: 1px solid rgba(172, 75, 255, 0.3) !important;
+}
+
+.pillar-title {
+  font-family: var(--edwyn-font-heading, 'Syne', sans-serif) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin: 0 0 0.35rem 0 !important;
+  line-height: 1.3 !important;
+}
+
+.pillar-subtitle {
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.85rem !important;
+  line-height: 1.3 !important;
+}
+
+.pillar-subtitle-orange {
+  color: #f08200 !important;
+}
+
+.pillar-subtitle-green {
+  color: #00c758 !important;
+}
+
+.pillar-subtitle-blue {
+  color: #3080ff !important;
+}
+
+.pillar-subtitle-purple {
+  color: #d9b3ff !important; /* Luminous violet for dark mode (8.2:1 AAA on #1e2224) */
+}
+
+.pillar-desc {
+  font-family: var(--edwyn-font-body, 'Inter', sans-serif) !important;
+  font-size: 0.9375rem !important;
+  color: #a3a8aa !important;
+  line-height: 1.65 !important;
+  margin: 0 !important;
+}
+
+/* ==========================================================================
+   LIGHT THEME OVERRIDES FOR STORYBOOK DOCS
+   High contrast, crisp borders, Syne + Inter + JetBrains Mono harmony
+   ========================================================================== */
+
+[data-theme='light'] .sbdocs-wrapper,
+[data-theme='light'] .sbdocs-content,
+.theme-light .sbdocs-wrapper,
+.theme-light .sbdocs-content,
+[data-theme='light'] .sbdocs,
+.theme-light .sbdocs {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+[data-theme='light'] .sbdocs h1,
+[data-theme='light'] .sbdocs h2,
+[data-theme='light'] .sbdocs h3,
+[data-theme='light'] .sbdocs h4,
+[data-theme='light'] .sbdocs h5,
+[data-theme='light'] .sbdocs h6,
+.theme-light .sbdocs h1,
+.theme-light .sbdocs h2,
+.theme-light .sbdocs h3,
+.theme-light .sbdocs h4,
+.theme-light .sbdocs h5,
+.theme-light .sbdocs h6 {
+  color: #0f172a !important;
+}
+
+[data-theme='light'] .sbdocs h2,
+.theme-light .sbdocs h2 {
+  border-bottom-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+[data-theme='light'] .sbdocs p,
+[data-theme='light'] .sbdocs li,
+.theme-light .sbdocs p,
+.theme-light .sbdocs li {
+  color: #1e293b !important;
+}
+
+[data-theme='light'] .sbdocs hr,
+.theme-light .sbdocs hr {
+  border-top-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+/* Accessible high-contrast orange link in light mode (4.85:1 contrast) */
+[data-theme='light'] .sbdocs a:not(.welcome-cta-btn),
+.theme-light .sbdocs a:not(.welcome-cta-btn) {
+  color: #c2410c !important;
+}
+
+[data-theme='light'] .sbdocs a:not(.welcome-cta-btn):hover,
+.theme-light .sbdocs a:not(.welcome-cta-btn):hover {
+  color: #9a3412 !important;
+}
+
+/* Inline code tags in light mode */
+[data-theme='light'] .sbdocs code:not(pre code),
+[data-theme='light'] .sbdocs-content code:not(pre code),
+[data-theme='light'] .sbdocs table code,
+[data-theme='light'] .sbdocs-content table code,
+.theme-light .sbdocs code:not(pre code),
+.theme-light .sbdocs-content code:not(pre code),
+.theme-light .sbdocs table code,
+.theme-light .sbdocs-content table code {
+  background-color: #f1f5f9 !important;
+  color: #9a3412 !important; /* Deep burnt orange (WCAG AAA 7.2:1 on #ffffff, 6.8:1 on #f8fafc) */
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  font-weight: 600 !important;
+}
+
+/* Tables in light mode */
+[data-theme='light'] .docblock-argstable,
+[data-theme='light'] .sbdocs table,
+[data-theme='light'] .sbdocs-content table,
+.theme-light .docblock-argstable,
+.theme-light .sbdocs table,
+.theme-light .sbdocs-content table {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+  color: #0f172a !important;
+}
+
+[data-theme='light'] .docblock-argstable th,
+[data-theme='light'] .sbdocs table th,
+[data-theme='light'] .sbdocs-content table th,
+[data-theme='light'] .sbdocs table thead,
+[data-theme='light'] .sbdocs-content table thead,
+.theme-light .docblock-argstable th,
+.theme-light .sbdocs table th,
+.theme-light .sbdocs-content table th,
+.theme-light .sbdocs table thead,
+.theme-light .sbdocs-content table thead {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  border-bottom: 2px solid rgba(15, 23, 42, 0.12) !important;
+}
+
+/* Light mode table rows: completely override dark emotion zebra striping */
+[data-theme='light'] .sbdocs table tr,
+[data-theme='light'] .sbdocs-content table tr,
+.theme-light .sbdocs table tr,
+.theme-light .sbdocs-content table tr,
+[data-theme='light'] .sbdocs-wrapper tr,
+.theme-light .sbdocs-wrapper tr {
+  background-color: #ffffff !important;
+  border-top: 1px solid rgba(15, 23, 42, 0.06) !important;
+}
+
+[data-theme='light'] .sbdocs table tr:nth-of-type(2n),
+[data-theme='light'] .sbdocs-content table tr:nth-of-type(2n),
+[data-theme='light'] .sbdocs table tbody tr:nth-of-type(2n),
+[data-theme='light'] .sbdocs-content table tbody tr:nth-of-type(2n),
+.theme-light .sbdocs table tr:nth-of-type(2n),
+.theme-light .sbdocs-content table tr:nth-of-type(2n),
+.theme-light .sbdocs table tbody tr:nth-of-type(2n),
+.theme-light .sbdocs-content table tbody tr:nth-of-type(2n),
+[data-theme='light'] .sbdocs-wrapper tr:nth-of-type(2n),
+.theme-light .sbdocs-wrapper tr:nth-of-type(2n),
+[data-theme='light'] .sbdocs-content tr:nth-of-type(2n),
+.theme-light .sbdocs-content tr:nth-of-type(2n) {
+  background-color: #f8fafc !important; /* Soft, clean neutral light grey */
+}
+
+[data-theme='light'] .docblock-argstable td,
+[data-theme='light'] .sbdocs table td,
+[data-theme='light'] .sbdocs-content table td,
+.theme-light .docblock-argstable td,
+.theme-light .sbdocs table td,
+.theme-light .sbdocs-content table td {
+  color: #0f172a !important; /* Deep slate, 15:1 contrast */
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06) !important;
+  background-color: transparent !important;
+}
+
+[data-theme='light'] .sbdocs table td strong,
+[data-theme='light'] .sbdocs-content table td strong,
+.theme-light .sbdocs table td strong,
+.theme-light .sbdocs-content table td strong {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+[data-theme='light'] .docblock-argstable tr,
+[data-theme='light'] .sb-argstableBlock tr,
+.theme-light .docblock-argstable tr,
+.theme-light .sb-argstableBlock tr {
+  background-color: #ffffff !important;
+}
+
+[data-theme='light'] .docblock-argstable tr:nth-of-type(2n),
+[data-theme='light'] .sb-argstableBlock tr:nth-of-type(2n),
+.theme-light .docblock-argstable tr:nth-of-type(2n),
+.theme-light .sb-argstableBlock tr:nth-of-type(2n) {
+  background-color: #f8fafc !important;
+}
+
+[data-theme='light'] .sbdocs table tbody tr:hover,
+[data-theme='light'] .sbdocs-content table tbody tr:hover,
+.theme-light .sbdocs table tbody tr:hover,
+.theme-light .sbdocs-content table tbody tr:hover,
+[data-theme='light'] .sbdocs table tbody tr:hover td,
+[data-theme='light'] .sbdocs-content table tbody tr:hover td,
+.theme-light .sbdocs table tbody tr:hover td,
+.theme-light .sbdocs-content table tbody tr:hover td {
+  background-color: #f1f5f9 !important;
+}
+
+/* Typeset block in light mode (fixes black on black contrast) */
+[data-theme='light'] .docblock-typeset,
+.theme-light .docblock-typeset {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme='light'] .docblock-typeset *,
+.theme-light .docblock-typeset * {
+  color: #0f172a !important;
+}
+
+[data-theme='light'] .docblock-typeset > div > div:first-child,
+[data-theme='light'] .docblock-typeset [class*='css-'] > div:first-child,
+.theme-light .docblock-typeset > div > div:first-child,
+.theme-light .docblock-typeset [class*='css-'] > div:first-child {
+  color: #64748b !important; /* Muted slate for size labels (4.65:1 AA) */
+}
+
+/* ColorPalette block in light mode */
+[data-theme='light'] .docblock-colorpalette [class*='title'],
+[data-theme='light'] .docblock-colorpalette h4,
+.theme-light .docblock-colorpalette [class*='title'],
+.theme-light .docblock-colorpalette h4 {
+  color: #0f172a !important;
+}
+
+[data-theme='light'] .docblock-colorpalette [class*='subtitle'],
+.theme-light .docblock-colorpalette [class*='subtitle'] {
+  color: #475569 !important;
+}
+
+[data-theme='light'] .docblock-colorpalette span,
+[data-theme='light'] .docblock-colorpalette div,
+.theme-light .docblock-colorpalette span,
+.theme-light .docblock-colorpalette div {
+  color: #334155 !important;
+}
+
+/* Story Preview in light mode */
+[data-theme='light'] .sbdocs-preview,
+[data-theme='light'] .docs-story,
+.theme-light .sbdocs-preview,
+.theme-light .docs-story {
+  background-color: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Welcome Hero & CTA in light mode */
+[data-theme='light'] .welcome-hero-banner,
+.theme-light .welcome-hero-banner {
+  background-color: #ffffff !important;
+  background-image: linear-gradient(135deg, rgba(240, 130, 0, 0.12) 0%, #ffffff 100%) !important;
+  border-color: rgba(240, 130, 0, 0.3) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme='light'] .welcome-hero-title,
+.theme-light .welcome-hero-title {
+  color: #0f172a !important;
+}
+
+[data-theme='light'] .welcome-hero-title .highlight-orange,
+.theme-light .welcome-hero-title .highlight-orange {
+  color: #c2410c !important;
+}
+
+[data-theme='light'] .welcome-hero-desc,
+.theme-light .welcome-hero-desc {
+  color: #334155 !important;
+}
+
+[data-theme='light'] .welcome-meta-desc,
+.theme-light .welcome-meta-desc {
+  color: #475569 !important;
+}
+
+[data-theme='light'] .welcome-cta-card,
+.theme-light .welcome-cta-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme='light'] .welcome-cta-title,
+.theme-light .welcome-cta-title {
+  color: #0f172a !important;
+}
+
+[data-theme='light'] .welcome-cta-desc,
+.theme-light .welcome-cta-desc {
+  color: #475569 !important;
+}
+
+/* Glow Demo Cards in light mode */
+[data-theme='light'] .glow-card,
+.theme-light .glow-card {
+  background: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme='light'] .glow-card strong,
+.theme-light .glow-card strong {
+  color: #c2410c !important;
+}
+
+[data-theme='light'] .glow-card p,
+.theme-light .glow-card p {
+  color: #475569 !important;
+}
+
+/* Pillars in light mode */
+[data-theme='light'] .pillar-card,
+.theme-light .pillar-card {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme='light'] .pillar-card:hover,
+.theme-light .pillar-card:hover {
+  border-color: rgba(240, 130, 0, 0.5) !important;
+  box-shadow: 0 6px 20px rgba(240, 130, 0, 0.12) !important;
+}
+
+[data-theme='light'] .pillar-number,
+.theme-light .pillar-number {
+  color: #c2410c !important;
+}
+
+[data-theme='light'] .pillar-title,
+.theme-light .pillar-title {
+  color: #0f172a !important;
+}
+
+[data-theme='light'] .pillar-desc,
+.theme-light .pillar-desc {
+  color: #475569 !important;
+}
+
+[data-theme='light'] .pillar-badge-orange,
+.theme-light .pillar-badge-orange {
+  background: #fff7ed !important;
+  color: #9a3412 !important;
+  border: 1px solid #fdba74 !important;
+}
+
+[data-theme='light'] .pillar-badge-green,
+.theme-light .pillar-badge-green {
+  background: #f0fdf4 !important;
+  color: #166534 !important;
+  border: 1px solid #86efac !important;
+}
+
+[data-theme='light'] .pillar-badge-blue,
+.theme-light .pillar-badge-blue {
+  background: #eff6ff !important;
+  color: #1e40af !important;
+  border: 1px solid #93c5fd !important;
+}
+
+[data-theme='light'] .pillar-badge-purple,
+.theme-light .pillar-badge-purple {
+  background: #faf5ff !important;
+  color: #6b21a8 !important;
+  border: 1px solid #d8b4fe !important;
+}
+
+[data-theme='light'] .pillar-subtitle-orange,
+.theme-light .pillar-subtitle-orange {
+  color: #c2410c !important;
+}
+
+[data-theme='light'] .pillar-subtitle-green,
+.theme-light .pillar-subtitle-green {
+  color: #15803d !important;
+}
+
+[data-theme='light'] .pillar-subtitle-blue,
+.theme-light .pillar-subtitle-blue {
+  color: #1d4ed8 !important;
+}
+
+[data-theme='light'] .pillar-subtitle-purple,
+.theme-light .pillar-subtitle-purple {
+  color: #7e22ce !important;
+}
