@@ -18,10 +18,10 @@ export default defineConfig({
         },
       },
       {
-        extends: './vite.config.ts',
         plugins: [
           storybookTest({
             configDir: path.join(dirname, '.storybook'),
+            storybookUrl: process.env.SB_URL,
           }),
         ],
         test: {
