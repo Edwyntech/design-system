@@ -7,7 +7,7 @@ import { create } from 'storybook/theming';
 export const edwynDark = create({
   base: 'dark',
   brandTitle: 'Edwyn Tech • Design System',
-  brandUrl: 'https://www.edwyn.tech',
+  brandUrl: 'https://github.com/Edwyntech/design-system',
   brandImage: './images/logo-brand.png',
   brandTarget: '_blank',
 
