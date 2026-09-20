@@ -8,7 +8,7 @@ export const edwynDark = create({
   base: 'dark',
   brandTitle: 'Edwyn Tech • Design System',
   brandUrl: 'https://www.edwyn.tech',
-  brandImage: '/images/logo.gif',
+  brandImage: './images/logo-brand.png',
   brandTarget: '_blank',
 
   // Colors
@@ -52,7 +52,7 @@ export const edwynLight = create({
   base: 'light',
   brandTitle: 'Edwyn Tech • Design System',
   brandUrl: 'https://www.edwyn.tech',
-  brandImage: '/images/logo.gif',
+  brandImage: './images/logo-brand.png',
   brandTarget: '_blank',
 
   // Colors

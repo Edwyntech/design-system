@@ -188,6 +188,11 @@
   --edwyn-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
   --edwyn-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
   --edwyn-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.12);
+
+  /* Brand Logo Contrast Container (Dark theme bg for Light mode) */
+  --edwyn-logo-brand-bg: #292e30;
+  --edwyn-logo-brand-border: rgba(255, 255, 255, 0.12);
+  --edwyn-logo-brand-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
 }
 
 :root {
@@ -295,6 +300,11 @@
   --edwyn-glow-orange-md: 0 0 30px rgba(240, 130, 0, 0.2);
   --edwyn-glow-orange-lg: 0 0 40px rgba(240, 130, 0, 0.1);
   --edwyn-glow-orange-button: 0 4px 20px rgba(240, 130, 0, 0.35);
+
+  /* Brand Logo Container in Dark Mode (transparent background) */
+  --edwyn-logo-brand-bg: transparent;
+  --edwyn-logo-brand-border: transparent;
+  --edwyn-logo-brand-shadow: none;
 
   /* Backdrop Blur (Exact matches from public CSS --blur-*) */
   --edwyn-blur-sm: blur(8px);

@@ -10,7 +10,7 @@ describe('Storybook Dual Themes', () => {
     expect(edwynDark.appContentBg).toBe('#1e2224');
     expect(edwynDark.textColor).toBe('#ffffff');
     expect(edwynDark.brandTitle).toContain('Edwyn Tech');
-    expect(edwynDark.brandImage).toBe('/images/logo.gif');
+    expect(edwynDark.brandImage).toBe('./images/logo-brand.png');
   });
 
   it('exports edwynLight with light base and brand properties', () => {
@@ -21,6 +21,6 @@ describe('Storybook Dual Themes', () => {
     expect(edwynLight.appContentBg).toBe('#ffffff');
     expect(edwynLight.textColor).toBe('#0f172a');
     expect(edwynLight.brandTitle).toContain('Edwyn Tech');
-    expect(edwynLight.brandImage).toBe('/images/logo.gif');
+    expect(edwynLight.brandImage).toBe('./images/logo-brand.png');
   });
 });

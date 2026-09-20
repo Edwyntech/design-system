@@ -23,37 +23,42 @@
     position: relative !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
-    padding: 16px 12px 14px !important;
+    justify-content: flex-start !important;
+    padding: 10px 12px !important;
     margin-bottom: 6px !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
     background-color: #292e30 !important;
+    gap: 1.5px !important; /* Gap reduit de moitie */
+    box-sizing: border-box !important;
   }
 
-  /* Conteneur BrandArea centre sur toute la largeur */
+  /* Conteneur BrandArea fluide */
   .sidebar-header > div:first-child {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    width: 100% !important;
-    margin-right: 0 !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
   }
 
   /* Lien cliquable autour du logo */
   .sidebar-header a {
-    display: flex !important;
+    display: inline-flex !important;
     justify-content: center !important;
     align-items: center !important;
     width: 100% !important;
-    margin: 0 auto !important;
-    padding: 6px 12px !important;
-    border-radius: 8px !important;
-    background: transparent !important;
-    transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease !important;
+    margin: 0 !important;
+    padding: 6px 10px !important;
+    border-radius: 12px !important;
+    background-color: transparent !important; /* Transparent en Dark Mode */
+    border: 1px solid transparent !important;
+    box-shadow: none !important;
+    transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease !important;
+    box-sizing: border-box !important;
   }
 
   .sidebar-header a:hover {
-    background-color: rgba(255, 255, 255, 0.04) !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
     transform: scale(1.02);
   }
 
@@ -62,31 +67,31 @@
     outline-offset: 3px !important;
   }
 
-  /* Logo de marque centre sans distorsion */
+  /* Logo de marque Storybook 350x150 */
   .sidebar-header img,
   img[alt*="Edwyn Tech"] {
     margin: 0 auto !important;
     display: block !important;
-    max-width: 175px !important;
-    max-height: 48px !important;
-    width: auto !important;
+    max-width: 100% !important;
+    width: 100% !important;
     height: auto !important;
+    max-height: 68px !important;
     object-fit: contain !important;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25)) !important;
+    filter: none !important;
   }
 
-  /* Bouton d options (roue crantee / menu) place a droite sans briser le centrage */
+  /* Bouton d options (roue crantee / menu) place proprement sans flotter sur le logo */
   .sidebar-header > button,
   .sidebar-header button[aria-label*="menu" i],
   .sidebar-header button[aria-label*="settings" i],
   .sidebar-header button[aria-label*="Storybook" i],
   .sidebar-header [class*="SidebarToggleButton"] {
-    position: absolute !important;
-    right: 8px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    z-index: 5 !important;
-    opacity: 0.75 !important;
+    position: static !important;
+    transform: none !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+    z-index: 10 !important;
+    opacity: 0.85 !important;
     transition: opacity 0.2s ease, color 0.2s ease !important;
   }
 
@@ -175,16 +180,24 @@
     border-bottom: 1px solid #e2e8f0 !important;
   }
 
+  [data-theme='light'] .sidebar-header a,
+  .theme-light .sidebar-header a {
+    background-color: #292e30 !important; /* Arrière-plan thème dark quand on est en light mode */
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18) !important;
+  }
+
   [data-theme='light'] .sidebar-header a:hover,
   .theme-light .sidebar-header a:hover {
-    background-color: rgba(0, 0, 0, 0.04) !important;
+    background-color: #1e2224 !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28) !important;
   }
 
   [data-theme='light'] .sidebar-header img,
   .theme-light .sidebar-header img,
   [data-theme='light'] img[alt*="Edwyn Tech"],
   .theme-light img[alt*="Edwyn Tech"] {
-    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08)) !important;
+    filter: none !important;
   }
 
   /* Search input in Light Mode */

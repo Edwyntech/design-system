@@ -19,6 +19,65 @@ if (typeof document !== 'undefined') {
       transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease !important;
     }
 
+    /* Structure header & espacement avec le bouton de configuration */
+    .sidebar-header {
+      padding: 10px 12px !important;
+      gap: 1.5px !important; /* Gap réduit de moitié */
+      justify-content: flex-start !important;
+      box-sizing: border-box !important;
+    }
+
+    .sidebar-header > div:first-child {
+      flex: 1 1 auto !important;
+      min-width: 0 !important;
+    }
+
+    /* Default (Dark Mode): transparent background */
+    .sidebar-header a {
+      background-color: transparent !important;
+      border: 1px solid transparent !important;
+      box-shadow: none !important;
+      border-radius: 12px !important;
+      padding: 6px 10px !important;
+      width: 100% !important;
+      margin: 0 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease !important;
+      box-sizing: border-box !important;
+    }
+
+    .sidebar-header a:hover {
+      background-color: rgba(255, 255, 255, 0.05) !important;
+      transform: scale(1.02);
+    }
+
+    .sidebar-header img,
+    img[alt*="Edwyn Tech"] {
+      max-height: 68px !important;
+      filter: none !important;
+    }
+
+    .sidebar-header > button,
+    .sidebar-header button[aria-label*="menu" i],
+    .sidebar-header button[aria-label*="settings" i],
+    .sidebar-header button[aria-label*="Storybook" i],
+    .sidebar-header [class*="SidebarToggleButton"] {
+      position: static !important;
+      transform: none !important;
+      flex-shrink: 0 !important;
+      margin: 0 !important;
+      z-index: 10 !important;
+      opacity: 0.85 !important;
+      transition: opacity 0.2s ease, color 0.2s ease !important;
+    }
+
+    .sidebar-header button:hover {
+      opacity: 1 !important;
+      color: #f08200 !important;
+    }
+
     /* =========================================================
        LIGHT THEME OVERRIDES FOR STORYBOOK MANAGER
        ========================================================= */
@@ -44,16 +103,26 @@ if (typeof document !== 'undefined') {
       border-bottom: 1px solid #e2e8f0 !important;
     }
 
+    html[data-theme='light'] .sidebar-header a,
+    body.theme-light .sidebar-header a,
+    [data-theme='light'] .sidebar-header a {
+      background-color: #292e30 !important; /* Arrière-plan thème dark quand on est en light mode */
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18) !important;
+    }
+
     html[data-theme='light'] .sidebar-header a:hover,
-    body.theme-light .sidebar-header a:hover {
-      background-color: rgba(0, 0, 0, 0.04) !important;
+    body.theme-light .sidebar-header a:hover,
+    [data-theme='light'] .sidebar-header a:hover {
+      background-color: #1e2224 !important;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28) !important;
     }
 
     html[data-theme='light'] .sidebar-header img,
     body.theme-light .sidebar-header img,
     html[data-theme='light'] img[alt*="Edwyn Tech"],
     body.theme-light img[alt*="Edwyn Tech"] {
-      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08)) !important;
+      filter: none !important;
     }
 
     html[data-theme='light'] #storybook-explorer-searchfield,
